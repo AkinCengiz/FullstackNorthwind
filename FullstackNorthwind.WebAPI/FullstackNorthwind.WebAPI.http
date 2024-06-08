@@ -1,0 +1,6 @@
+@FullstackNorthwind.WebAPI_HostAddress = http://localhost:5259
+
+GET {{FullstackNorthwind.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
