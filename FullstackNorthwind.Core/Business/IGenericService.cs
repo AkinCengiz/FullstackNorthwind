@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FullstackNorthwind.Core.Entities;
+using FullstackNorthwind.Core.Utilities.Results;
 
 namespace FullstackNorthwind.Core.Business;
 public interface IGenericService<T> where T : class, IEntity, new()
 {
-	List<T> GetList();
-	T GetById(int id);
-	void Add(T entity);
-	void Update(T entity);
-	void Delete(T entity);
+	IDataResult<List<T>> GetList();
+	IDataResult<T> GetById(int id);
+	IResult Add(T entity);
+	IResult Update(T entity);
+	IResult Delete(T entity);
 }

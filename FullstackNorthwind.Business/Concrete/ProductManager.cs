@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FullstackNorthwind.Business.Abstract;
+using FullstackNorthwind.Core.Utilities.Results;
 using FullstackNorthwind.DataAccess.Abstract;
 using FullstackNorthwind.Entities.Concrete;
 
@@ -17,33 +18,78 @@ public class ProductManager : IProductService
 		_productDal = productDal;
 	}
 
-	public List<Product> GetList()
+	public IDataResult<List<Product>> GetList()
 	{
-		return _productDal.GetAll().ToList();
+		try
+		{
+			return new SuccessDataResult<List<Product>>(_productDal.GetAll().ToList());
+		}
+		catch (Exception e)
+		{
+			return new ErrorDataResult<List<Product>>(e.Message);
+		}
 	}
 
-	public Product GetById(int id)
+	public IDataResult<Product> GetById(int id)
 	{
-		return _productDal.Get(p => p.ProductId == id);
+		try
+		{
+			return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductId == id));
+		}
+		catch (Exception e)
+		{
+			return new ErrorDataResult<Product>(e.Message);
+		}
 	}
 
-	public void Add(Product entity)
+	public IResult Add(Product entity)
 	{
-		_productDal.Add(entity);
+		try
+		{
+			_productDal.Add(entity);
+			return new SuccessResult();
+		}
+		catch (Exception e)
+		{
+			return new ErrorResult(e.Message);
+		}
 	}
 
-	public void Update(Product entity)
+	public IResult Update(Product entity)
 	{
-		_productDal.Update(entity);
+		try
+		{
+			_productDal.Update(entity);
+			return new SuccessResult();
+		}
+		catch (Exception e)
+		{
+			return new ErrorResult(e.Message);
+		}
 	}
 
-	public void Delete(Product entity)
+	public IResult Delete(Product entity)
 	{
-		_productDal.Delete(entity);
+		try
+		{
+			_productDal.Delete(entity);
+			return new SuccessResult();
+		}
+		catch (Exception e)
+		{
+			return new ErrorResult(e.Message);
+		}
 	}
 
-	public List<Product> GetProductsByCategory(int categoryId)
+	public IDataResult<List<Product>> GetProductsByCategory(int categoryId)
 	{
-		return _productDal.GetAll(p => p.CategoryId == categoryId).ToList();
+		try
+		{
+			return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.CategoryId == categoryId).ToList());
+		}
+		catch (Exception e)
+		{
+			return new ErrorDataResult<List<Product>>(e.Message);
+		}
 	}
 }
