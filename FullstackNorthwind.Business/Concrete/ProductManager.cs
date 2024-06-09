@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FullstackNorthwind.Business.Abstract;
+using FullstackNorthwind.Business.Constants;
 using FullstackNorthwind.Core.Utilities.Results;
 using FullstackNorthwind.DataAccess.Abstract;
 using FullstackNorthwind.Entities.Concrete;
@@ -22,11 +23,11 @@ public class ProductManager : IProductService
 	{
 		try
 		{
-			return new SuccessDataResult<List<Product>>(_productDal.GetAll().ToList());
+			return new SuccessDataResult<List<Product>>(_productDal.GetAll().ToList(),Messages.ProductGetListSuccess);
 		}
 		catch (Exception e)
 		{
-			return new ErrorDataResult<List<Product>>(e.Message);
+			return new ErrorDataResult<List<Product>>(Messages.ProductGetListError + "\n" + e.Message);
 		}
 	}
 
@@ -34,11 +35,11 @@ public class ProductManager : IProductService
 	{
 		try
 		{
-			return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductId == id));
+			return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductId == id),Messages.ProductGetSuccess);
 		}
 		catch (Exception e)
 		{
-			return new ErrorDataResult<Product>(e.Message);
+			return new ErrorDataResult<Product>(Messages.ProductGetError);
 		}
 	}
 
@@ -47,11 +48,11 @@ public class ProductManager : IProductService
 		try
 		{
 			_productDal.Add(entity);
-			return new SuccessResult();
+			return new SuccessResult(Messages.ProductAddedSuccess);
 		}
 		catch (Exception e)
 		{
-			return new ErrorResult(e.Message);
+			return new ErrorResult(Messages.ProductAddedError);
 		}
 	}
 
@@ -60,11 +61,11 @@ public class ProductManager : IProductService
 		try
 		{
 			_productDal.Update(entity);
-			return new SuccessResult();
+			return new SuccessResult(Messages.ProductUpdatedSuccess);
 		}
 		catch (Exception e)
 		{
-			return new ErrorResult(e.Message);
+			return new ErrorResult(Messages.ProductUpdatedError);
 		}
 	}
 
@@ -73,11 +74,11 @@ public class ProductManager : IProductService
 		try
 		{
 			_productDal.Delete(entity);
-			return new SuccessResult();
+			return new SuccessResult(Messages.ProductDeletedSuccess);
 		}
 		catch (Exception e)
 		{
-			return new ErrorResult(e.Message);
+			return new ErrorResult(Messages.ProductDeletedError + "\n" + e.Message);
 		}
 	}
 
@@ -85,11 +86,11 @@ public class ProductManager : IProductService
 	{
 		try
 		{
-			return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.CategoryId == categoryId).ToList());
+			return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.CategoryId == categoryId).ToList(),Messages.ProductGetListSuccess);
 		}
 		catch (Exception e)
 		{
-			return new ErrorDataResult<List<Product>>(e.Message);
+			return new ErrorDataResult<List<Product>>(Messages.ProductGetListError);
 		}
 	}
 }
