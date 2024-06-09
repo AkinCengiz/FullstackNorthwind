@@ -7,6 +7,7 @@ using Autofac;
 using FullstackNorthwind.Business.Abstract;
 using FullstackNorthwind.Business.Concrete;
 using FullstackNorthwind.DataAccess.Abstract;
+using FullstackNorthwind.DataAccess.Concrete.EntityFramework;
 using FullstackNorthwind.DataAccess.Concrete.EntityFramework.Contexts;
 
 namespace FullstackNorthwind.Business.DependencyResolvers.AutoFac;
@@ -16,5 +17,7 @@ public class AutofacBusinessModule : Module
 	{
 		builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
 		builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
+		builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
+		builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
 	}
 }
