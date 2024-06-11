@@ -31,4 +31,16 @@ public static class Messages
 	public static string CategoryGetListError = "Kategori listeleme işlemi başarısız...";
 	public static string CategoryGetError = "Kategori getirme işlemi başarısız...";	
 
+	//User Result Messages
+	public static string UserAddedSuccess = "Kullanıcı başarıyla eklendi.";
+	public static string UserUpdatedSuccess = "Kullanıcı başarıyla güncellendi.";
+	public static string UserDeletedSuccess = "Kullanıcı başarıyla silindi.";
+	public static string UserGetListSuccess = "Kullanıcılar başarıyla listelendi.";
+	public static string UserGetSuccess = "Kullanıcı başarıyla getirildi.";
+	public static string UserAddedError = "Kullanıcı ekleme işlemi başarısız...";
+	public static string UserUpdatedError = "Kullanıcı güncelleme işlemi başarısız...";
+	public static string UserDeletedError = "Kullanıcı silme işlemi başarısız...";
+	public static string UserGetListError = "Kullanıcı listeleme işlemi başarısız...";
+	public static string UserGetError = "Kullanıcı getirme işlemi başarısız...";
+
 }
