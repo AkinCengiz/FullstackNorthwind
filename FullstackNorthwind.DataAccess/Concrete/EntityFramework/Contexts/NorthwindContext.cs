@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FullstackNorthwind.Core.Entities.Concrete;
 using FullstackNorthwind.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FullstackNorthwind.Business.Abstract;
 using FullstackNorthwind.Business.Constants;
+using FullstackNorthwind.Core.Entities.Concrete;
 using FullstackNorthwind.Core.Utilities.Results;
 using FullstackNorthwind.DataAccess.Abstract;
 using FullstackNorthwind.Entities.Concrete;
